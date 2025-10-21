@@ -3,6 +3,7 @@ import {ColorModeButton} from "./components/ui/color-mode.tsx";
 import {DecorativeBox} from "@/components/DecorativeBox.tsx";
 import {Grid, GridItem} from "@chakra-ui/react";
 import {NavBar} from "@/components/NavBar.tsx";
+import {AnimGrid} from "@/components/AnimGrid.tsx";
 
 
 
@@ -25,7 +26,7 @@ export default function App() {
 
 
       <GridItem area="main">
-        <DecorativeBox text="main"/>
+        <AnimGrid/>
       </GridItem>
     </Grid>
 
