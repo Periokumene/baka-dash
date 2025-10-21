@@ -2,7 +2,7 @@ import {Box, Text} from "@chakra-ui/react";
 import {useGames} from "@/hooks/useGames.ts";
 
 
-export function AnimGrid() {
+export function GameGrid() {
   const { games, error } = useGames();
 
   return (
