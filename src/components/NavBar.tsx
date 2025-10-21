@@ -1,7 +1,7 @@
 import {HStack, Image, Text, Theme} from "@chakra-ui/react";
 import logo from "../assets/react.svg";
 
-export function NavBar() {
+export default function NavBar() {
   console.log(logo);
   return (
     <Theme appearance="light">

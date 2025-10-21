@@ -1,18 +1,28 @@
-import {Box, Text} from "@chakra-ui/react";
+import {Box, For, SimpleGrid, Stack, Text} from "@chakra-ui/react";
 import {useGames} from "@/hooks/useGames.ts";
+import GameCard from "@/components/GameCard.tsx";
 
 
-export function GameGrid() {
+export default function GameGrid() {
   const { games, error } = useGames();
 
   return (
     <>
       { error && <Text>{error}</Text> }
-      <Box borderColor="fg.disabled" borderWidth="1px">
-        <ul>
-          { games.map(game=><li key={game.id}>{game.id}---{game.name}</li>) }
-        </ul>
-      </Box>
+      <SimpleGrid
+        overflow="hidden"
+        columns={[null,1,2,3,5]}
+        gap="40px"
+      >
+        <For each={games}>
+          {(game) => (
+            <GameCard game={game} key={game.id}></GameCard>
+          )}
+        </For>
+      </SimpleGrid>
+      {/*<Stack gap="4" direction="row" wrap="wrap">*/}
+
+      {/*</Stack>*/}
     </>
   );
 }

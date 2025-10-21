@@ -3,11 +3,20 @@ import apiClient from "@/services/api-client.ts";
 import {AxiosError} from "axios";
 
 
-interface Game{
+export interface Game{
   id: number;
   name: string,
+  metacritic : number,
+  background_image: string,
   images: string[],
+  parent_platforms: { platform: PlatForm} []
 }
+export interface PlatForm{
+  id: number,
+  name: string,
+  slug: string,
+}
+
 interface GameResponse{
   count: number,
   next: string,
@@ -22,6 +31,7 @@ export function useGames(){
   useEffect(() => {
     setError("FETCHING...");
     console.log("FETCHING...")
+
     apiClient
       .get<GameResponse>("/games")
       .then(res=>{
