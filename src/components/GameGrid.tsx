@@ -1,4 +1,4 @@
-import {Box, For, SimpleGrid, Stack, Text} from "@chakra-ui/react";
+import {For, SimpleGrid, Text} from "@chakra-ui/react";
 import {useGames} from "@/hooks/useGames.ts";
 import GameCard from "@/components/GameCard.tsx";
 
