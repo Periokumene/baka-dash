@@ -1,6 +1,6 @@
 import './App.css'
 import {DecorativeBox} from "@/components/DecorativeBox.tsx";
-import {Grid, GridItem} from "@chakra-ui/react";
+import {Grid, GridItem, Show} from "@chakra-ui/react";
 import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
 
@@ -18,9 +18,10 @@ export default function App() {
         <NavBar/>
       </GridItem>
 
-        <GridItem area="side">
-          <DecorativeBox text="side"/>
-        </GridItem>
+      <GridItem area="side" hideBelow="md">
+        <DecorativeBox text="side"/>
+      </GridItem>
+
 
 
       <GridItem area="main">
