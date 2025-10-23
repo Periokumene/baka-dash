@@ -27,10 +27,10 @@ interface GameResponse{
 export function useGames(){
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setError("FETCHING...");
-    console.log("FETCHING...")
+    setIsLoading(true);
 
     apiClient
       .get<GameResponse>("/games")
@@ -38,8 +38,13 @@ export function useGames(){
         setGames(res.data.results);
         setError("");
       })
-      .catch((err:AxiosError)=>{ setError(err.message)});
+      .catch((err:AxiosError)=>{
+        setError(err.message);
+      })
+      .finally(()=>{
+        setIsLoading(false)
+      });
   }, []);
 
-  return {games, error};
+  return {games, error, isLoading};
 }

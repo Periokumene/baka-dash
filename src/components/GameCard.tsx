@@ -2,16 +2,16 @@ import {Card, Image} from "@chakra-ui/react";
 import type {Game} from "@/hooks/useGames.ts";
 import GamePlatformList from "@/components/GamePlatformList.tsx";
 import GameScore from "@/components/GameScore.tsx";
+import {GameCardHolder} from "@/components/GameCardHolder.tsx";
 
 interface Props{
   game : Game,
 }
 
 export default function GameCard({game} : Props) {
-  console.log(game);
   return (
-    <>
-      <Card.Root width="320px" height="520px" borderRadius={10} overflow="hidden">
+    <GameCardHolder>
+      <Card.Root>
         <Image src={game.background_image}
                width="600px" height="400px" objectFit="cover" objectPosition="center"
         />
@@ -27,6 +27,6 @@ export default function GameCard({game} : Props) {
           />
         </Card.Footer>
       </Card.Root>
-    </>
+    </GameCardHolder>
   );
 }

@@ -1,10 +1,12 @@
-import {For, SimpleGrid, Text} from "@chakra-ui/react";
+import {For, Show, SimpleGrid, Text} from "@chakra-ui/react";
 import {useGames} from "@/hooks/useGames.ts";
 import GameCard from "@/components/GameCard.tsx";
+import {GameCardSkel} from "@/components/GameCardSkel.tsx";
 
 
 export default function GameGrid() {
-  const { games, error } = useGames();
+  const { games, error, isLoading } = useGames();
+  const skeletonList = [1, 2, 3, 4, 5, 6, 7];
 
   return (
     <>
@@ -14,15 +16,18 @@ export default function GameGrid() {
         columns={[null,1,2,3,5]}
         gap="40px"
       >
-        <For each={games}>
-          {(game) => (
-            <GameCard game={game} key={game.id}></GameCard>
-          )}
-        </For>
-      </SimpleGrid>
-      {/*<Stack gap="4" direction="row" wrap="wrap">*/}
 
-      {/*</Stack>*/}
+        <Show when={isLoading}>
+          <For each={skeletonList}>{sk=> <GameCardSkel key={sk}/>}</For>
+        </Show>
+
+        <Show when={!isLoading}>
+          <For each={games}>
+            {(game, i) => <GameCard key={i} game={game}/>}
+          </For>
+        </Show>
+
+      </SimpleGrid>
     </>
   );
 }
