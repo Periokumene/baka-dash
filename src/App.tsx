@@ -3,6 +3,7 @@ import {DecorativeBox} from "@/components/DecorativeBox.tsx";
 import {Grid, GridItem, Show} from "@chakra-ui/react";
 import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
+import {GenresList} from "@/components/GenresList.tsx";
 
 
 
@@ -19,7 +20,7 @@ export default function App() {
       </GridItem>
 
       <GridItem area="side" hideBelow="md">
-        <DecorativeBox text="side"/>
+        <GenresList/>
       </GridItem>
 
 
