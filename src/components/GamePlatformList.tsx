@@ -42,7 +42,7 @@ export default function GamePlatformList({platforms} : Props) {
 
       <HStack>
         <For each={platforms}>
-          {(platform)=><Icon as={platform.slug in iconTypeMap ? iconTypeMap[platform.slug] : MdError} color='gray.500'/>}
+          {(platform, i)=><Icon key={i} as={platform.slug in iconTypeMap ? iconTypeMap[platform.slug] : MdError} color='gray.500'/>}
         </For>
       </HStack>
     </>
