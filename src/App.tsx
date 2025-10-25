@@ -1,6 +1,5 @@
 import './App.css'
-import {DecorativeBox} from "@/components/DecorativeBox.tsx";
-import {Grid, GridItem, Show} from "@chakra-ui/react";
+import {Grid, GridItem} from "@chakra-ui/react";
 import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
@@ -9,26 +8,33 @@ import {GenresList} from "@/components/GenresList.tsx";
 
 export default function App() {
 
+  const areasLg   = `"nav  nav "
+                     "side main"`;
+  const areasBase = `"nav" "main"`;
+
+  const columnsLg   = "200px 1fr";
+  const columnsBase = "1fr";
+
   return (<>
     <Grid gap="1"
-          templateAreas={`"nav  nav "
-                          "side main"`}
+          templateAreas  ={{base:areasBase, lg:areasLg}}
+          templateColumns={{base:columnsBase, lg:columnsLg}}
     >
 
       <GridItem area="nav">
         <NavBar/>
       </GridItem>
 
-      <GridItem area="side" hideBelow="md">
+      <GridItem area="side" hideBelow="lg">
         <GenresList/>
       </GridItem>
-
-
 
       <GridItem area="main">
         <GameGrid/>
       </GridItem>
     </Grid>
+
+
 
 
     {/*<AspectRatio ratio={16 / 9}>*/}
