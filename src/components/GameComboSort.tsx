@@ -1,5 +1,6 @@
 import {Button, For, Menu, Portal} from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import useGameQueryStore from "@/store.ts";
 
 
 const options = [
@@ -11,12 +12,12 @@ const options = [
   { value: "-rating", label: "Average rating" },
 ];
 
-interface Props {
-  ordering: string,
-  onSelectOrdering: (order: string) => void,
-}
 
-export function GameComboSort({ordering, onSelectOrdering} : Props) {
+
+export function GameComboSort() {
+  const ordering = useGameQueryStore(store=>store.gameQuery.ordering);
+  const setOrdering = useGameQueryStore(store=>store.setOrdering);
+
   const currentOption = options.find(option=>option.value===ordering);
 
   return (
@@ -34,7 +35,7 @@ export function GameComboSort({ordering, onSelectOrdering} : Props) {
             <Menu.Content>
               <For each={options}>
                 {(option)=>
-                  <Menu.Item value={option.value} onClick={()=>onSelectOrdering(option.value)}>
+                  <Menu.Item value={option.value} onClick={()=>setOrdering(option.value)}>
                     {option.label}
                   </Menu.Item>}
               </For>

@@ -1,6 +1,7 @@
 import {useInfiniteQuery} from "@tanstack/react-query";
 import APIClient, {type FetchResponse} from "@/services/api-client.ts";
 import ms from "ms";
+import type {GameQuery} from "@/store.ts";
 
 
 export interface Platform {
@@ -17,12 +18,7 @@ export interface Game{
   parent_platforms: { platform: Platform} []
 }
 
-export interface GameQuery{
-  genreId: number,
-  platform: Platform | null,
-  ordering: string,
-  searchText: string,
-}
+
 //
 const query2Params = (gameQuery: GameQuery, page: number)=>{
   const Pack = {

@@ -3,9 +3,7 @@ import {Box, Flex, Grid, GridItem} from "@chakra-ui/react";
 import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
-import {useState} from "react";
 import {GameComboPlatform} from "@/components/GameComboPlatform.tsx";
-import type {GameQuery} from "@/hooks/useGames.ts";
 import {GameComboSort} from "@/components/GameComboSort.tsx";
 import {GameHeading} from "@/components/GameHeading.tsx";
 
@@ -22,7 +20,7 @@ const columnsLg   = "150px 1fr";
 
 
 export default function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  // const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (<>
     <Grid gap="1"
@@ -31,24 +29,24 @@ export default function App() {
     >
 
       <GridItem area="nav">
-        <NavBar onChangeSearchText={newText=>{setGameQuery({...gameQuery, searchText: newText})}}/>
+        <NavBar/>
       </GridItem>
 
       <GridItem area="side" hideBelow="lg">
-        <GenresList selectedGenreId={gameQuery.genreId} onSelectGenreId={(genreId)=>setGameQuery({...gameQuery, genreId})}/>
+        <GenresList/>
       </GridItem>
 
       <GridItem area="main">
-        <GameHeading gameQuery={gameQuery}/>
+        <GameHeading/>
 
         <Flex paddingLeft={0} marginTop={5} marginBottom={5}>
           <Box marginRight={5}>
-            <GameComboPlatform selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}/>
+            <GameComboPlatform/>
           </Box>
-          <GameComboSort ordering={gameQuery.ordering} onSelectOrdering={ordering => {setGameQuery({...gameQuery, ordering})} }/>
+          <GameComboSort/>
         </Flex>
 
-        <GameGrid gameQuery={gameQuery}/>
+        <GameGrid/>
       </GridItem>
     </Grid>
 

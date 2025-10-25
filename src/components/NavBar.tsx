@@ -3,19 +3,16 @@ import logo from "../assets/react.svg";
 import {ColorModeButton} from "@/components/ui/color-mode.tsx";
 import {SearchInput} from "@/components/SearchInput.tsx";
 
-interface Props{
-  onChangeSearchText : (newText:string)=>void,
-}
 
 
-export default function NavBar({onChangeSearchText} : Props) {
+export default function NavBar() {
   return (
       <HStack borderColor="fg.disabled" borderWidth="1px" justifyContent="space-between">
         <HStack>
           <Image src={logo} height="60px"></Image>
           <Text>NavBar</Text>
         </HStack>
-        <SearchInput onChangeSearchText={onChangeSearchText}/>
+        <SearchInput/>
         <ColorModeButton float="right"/>
       </HStack>
   );

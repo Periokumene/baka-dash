@@ -1,14 +1,14 @@
 // import usePlatforms from "@/hooks/usePlatforms.ts";
 import {Button, For, Menu, Portal, Spinner} from "@chakra-ui/react";
 import usePlatforms from "@/hooks/usePlatforms.ts";
-import type {Platform} from "@/hooks/useGames.ts";
+import useGameQueryStore from "@/store.ts";
 
-interface Props{
-  selectedPlatform: Platform | null,
-  onSelectPlatform: (platform:Platform)=>void;
-};
 
-export function GameComboPlatform({selectedPlatform, onSelectPlatform} : Props) {
+
+export function GameComboPlatform() {
+  const platform = useGameQueryStore(store=>store.gameQuery.platform);
+  const setPlatform = useGameQueryStore(store=>store.setPlatform);
+
   const { data, error, isLoading} = usePlatforms();
 
   return (
@@ -16,7 +16,7 @@ export function GameComboPlatform({selectedPlatform, onSelectPlatform} : Props) 
       <Menu.Root>
         <Menu.Trigger asChild>
           <Button variant="outline" size="sm">
-            {selectedPlatform? selectedPlatform.name : "Platform"}
+            {platform? platform.name : "Platform"}
             {isLoading && <Spinner/>}
             {/*Platform*/}
           </Button>
@@ -27,7 +27,7 @@ export function GameComboPlatform({selectedPlatform, onSelectPlatform} : Props) 
               { error && <Menu.Item value="ERROR_PRESERVED">{error?.message}</Menu.Item> }
               <For each={data?.results}>
                 {(platform)=>
-                  <Menu.Item value={platform.name} onClick={()=>onSelectPlatform(platform)}>
+                  <Menu.Item value={platform.name} onClick={()=>setPlatform(platform)}>
                     {platform.name}
                   </Menu.Item>}
               </For>

@@ -29,7 +29,7 @@ const initalGameQuery : GameQuery = {
 // 可以直接理解成 const [store, setter] = useState<GameQuery>(initialGameQuery)
 // setter可以接受callback或者显式直接设置值
 
-const useGameQueryState = create<gameQueryStore>(setter=>({
+const useGameQueryStore = create<gameQueryStore>(setter=>({
   gameQuery: initalGameQuery,
   setGenreId: genreId => {
     setter(store=>({
@@ -53,4 +53,4 @@ const useGameQueryState = create<gameQueryStore>(setter=>({
   }
 }));
 
-export default useGameQueryState;
+export default useGameQueryStore;

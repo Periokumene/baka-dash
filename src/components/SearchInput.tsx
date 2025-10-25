@@ -1,7 +1,7 @@
 import {Input, InputGroup} from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
 import {useRef} from "react";
-import useGameQueryState from "@/store.ts";
+import useGameQueryStore from "@/store.ts";
 
 
 
@@ -10,7 +10,7 @@ export function SearchInput() {
   // 但这样会导致所有的State全都被订阅，造成频繁更新
   // 通过传入一个选择器Callback的方式（尽管这个写法真tm绕）可以只订阅特定state
   // 获取多个需要使用shallow
-  const setSearchText = useGameQueryState(store=>store.setSearchText);
+  const setSearchText = useGameQueryStore(store=>store.setSearchText);
 
   const inputRef = useRef<HTMLInputElement>(null);
   return (
