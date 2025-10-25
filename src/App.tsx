@@ -6,6 +6,7 @@ import {GenresList} from "@/components/GenresList.tsx";
 import {useState} from "react";
 import {GameComboPlatform} from "@/components/GameComboPlatform.tsx";
 import type {GameQuery} from "@/hooks/useGames.ts";
+import {GameComboSort} from "@/components/GameComboSort.tsx";
 
 const areasBase = `"nav" "main"`;
 const areasLg   = `"nav  nav "
@@ -37,6 +38,7 @@ export default function App() {
 
       <GridItem area="main">
         <GameComboPlatform selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}/>
+        <GameComboSort ordering={gameQuery.ordering} onSelectOrdering={ordering => {setGameQuery({...gameQuery, ordering})} }/>
         <GameGrid gameQuery={gameQuery}/>
       </GridItem>
     </Grid>
