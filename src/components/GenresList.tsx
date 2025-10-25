@@ -22,13 +22,17 @@ export function GenresList() {
         { data?.results.map((genre) => (
           <List.Item key={genre.id} paddingY="5px">
             <HStack>
-              <Image src={genre.image_background} borderRadius={8}
-                     boxSize="32px" objectFit="cover" objectPosition="center"
-              />
-              <Button fontSize="md"
+
+              <Button whiteSpace="normal"
+                      fontSize="md"
                       fontWeight={genre.id === genreId ? 'bold' : 'normal'}
-                      variant="outline"
-                      onClick={()=>setGenreId(genre.id)}>
+                      variant="ghost"
+                      paddingLeft={1}
+                      onClick={()=>setGenreId(genre.id)}
+              >
+                <Image src={genre.image_background} borderRadius={8}
+                       boxSize="32px" objectFit="cover" objectPosition="center"
+                />
                 {genre.name}
               </Button>
             </HStack>

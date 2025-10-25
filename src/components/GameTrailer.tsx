@@ -19,5 +19,5 @@ export default function GameTrailer({gameId} : Props) {
       poster={first.preview}
       controls
     />
-  ) : <i>Video Invalid!</i>;
+  ) :null;
 }

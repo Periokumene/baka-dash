@@ -11,7 +11,7 @@ const areasBase = `"main"`;
 const areasLg   = `"side main"`;
 
 const columnsBase = "1fr";
-const columnsLg   = "150px 1fr";
+const columnsLg   = "250px 1fr";
 
 function HomePage() {
   return (
@@ -23,7 +23,7 @@ function HomePage() {
         <GenresList/>
       </GridItem>
 
-      <GridItem area="main">
+      <GridItem area="main" paddingTop={10}>
         <GameHeading/>
 
         <Flex paddingLeft={0} marginTop={5} marginBottom={5}>
