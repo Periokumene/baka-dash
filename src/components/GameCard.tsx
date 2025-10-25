@@ -23,7 +23,7 @@ export default function GameCard({game} : Props) {
         <Card.Footer justifyContent="space-between">
           <GameScore score={game.metacritic }/>
           <GamePlatformList
-            platforms={game.parent_platforms.map(data=>data.platform)}
+            platforms={game.parent_platforms?.map(data=>data.platform)}
           />
         </Card.Footer>
       </Card.Root>

@@ -10,7 +10,7 @@ import { slotRecipes } from "./slot-recipes"
 import { textStyles } from "./text-styles"
 import { tokens } from "./tokens"
 
-const themeConfig = defineConfig({
+let themeConfig = defineConfig({
   preflight: true,
   cssVarsPrefix: "chakra",
   cssVarsRoot: ":where(:root, :host)",

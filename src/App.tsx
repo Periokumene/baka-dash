@@ -14,7 +14,7 @@ const areasLg   = `"nav  nav "
                    "side main"`;
 
 const columnsBase = "1fr";
-const columnsLg   = "200px 1fr";
+const columnsLg   = "150px 1fr";
 
 
 
