@@ -1,5 +1,5 @@
 import type {Genre} from "@/hooks/useGenres.ts";
-import {useQuery} from "@tanstack/react-query";
+import {useInfiniteQuery} from "@tanstack/react-query";
 import APIClient, {type FetchResponse} from "@/services/api-client.ts";
 
 
@@ -23,15 +23,15 @@ export interface GameQuery{
   searchText: string,
 }
 
-
-const query2Params = (gameQuery: GameQuery)=>{
-  console.log(gameQuery);
+//
+const query2Params = (gameQuery: GameQuery, page: number)=>{
   const Pack = {
     params: {
-      genres: gameQuery.genre?.id,
+        genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.ordering,
         search: gameQuery.searchText,
+        page: page,
     }
   }
   return Pack;
@@ -39,13 +39,13 @@ const query2Params = (gameQuery: GameQuery)=>{
 
 const client = new APIClient<Game>("/games");
 
-const useGamesNew = (gameQuery: GameQuery)=>useQuery<FetchResponse<Game>>({
+const useGamesNew = (gameQuery: GameQuery)=>useInfiniteQuery<FetchResponse<Game>, Error>({
   queryKey: ["game", gameQuery], // 这里即useEffect的deps，确保gameQuery修改时useQuery会更新
-  queryFn: ()=>client.getAll(query2Params(gameQuery)),
-  staleTime: 24 * 60 * 60 * 1000, // 24h
-  // initialData:
+  queryFn: ({pageParam}) => { return client.getAll(query2Params(gameQuery, pageParam as number)) },
+  initialPageParam: 1,
+  getNextPageParam: (lastPage, allPages)=>{ return lastPage.next ? allPages.length + 1 : undefined }
 });
 
-
-
 export default useGamesNew;
+
+
