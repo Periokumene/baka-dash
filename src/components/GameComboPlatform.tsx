@@ -8,7 +8,7 @@ interface Props{
   onSelectPlatform: (platform:Platform)=>void;
 };
 
-export function GamePlatformMenu({selectedPlatform, onSelectPlatform} : Props) {
+export function GameComboPlatform({selectedPlatform, onSelectPlatform} : Props) {
   const { datas, error, isLoading} = usePlatforms();
 
   return (

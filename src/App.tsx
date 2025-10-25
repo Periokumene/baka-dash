@@ -4,7 +4,7 @@ import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
 import {useState} from "react";
-import {GamePlatformMenu} from "@/components/GamePlatformMenu.tsx";
+import {GameComboPlatform} from "@/components/GameComboPlatform.tsx";
 import type {GameQuery} from "@/hooks/useGames.ts";
 
 const areasBase = `"nav" "main"`;
@@ -36,7 +36,7 @@ export default function App() {
       </GridItem>
 
       <GridItem area="main">
-        <GamePlatformMenu selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}/>
+        <GameComboPlatform selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}/>
         <GameGrid gameQuery={gameQuery}/>
       </GridItem>
     </Grid>
