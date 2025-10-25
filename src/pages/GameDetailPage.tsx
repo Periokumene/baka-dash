@@ -4,6 +4,7 @@ import {Heading, Spinner} from "@chakra-ui/react";
 import {ExpandableText} from "@/components/ExpandableText.tsx";
 import {GameAttributes} from "@/components/GameAttributes.tsx";
 import GameTrailer from "@/components/GameTrailer.tsx";
+import {GameScreenshots} from "@/components/GameScreenshots.tsx";
 
 function GameDetailPage() {
   // router配置了 games/:slug 路径 -- GameDetailPage，因此访问games/GTA的时候，会渲染GameDetailPage，并且我们知道slug是GTA
@@ -19,6 +20,7 @@ function GameDetailPage() {
       <ExpandableText>{game.description_raw}</ExpandableText>
       <GameAttributes game={game} />
       <GameTrailer gameId={game.id} />
+      <GameScreenshots gameId={game.id} />
     </>
   );
 }
