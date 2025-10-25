@@ -19,6 +19,7 @@ export interface GameQuery{
   genre: Genre | null,
   platform: Platform | null,
   ordering: string,
+  searchText: string,
 }
 
 
@@ -30,6 +31,7 @@ const useGames = (gameQuery: GameQuery)=>useData<Game>(
       genres: gameQuery.genre?.id,
       platforms: gameQuery.platform?.id,
       ordering: gameQuery.ordering,
+      search: gameQuery.searchText,
     }
   },
   [gameQuery]

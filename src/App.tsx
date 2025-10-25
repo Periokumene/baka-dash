@@ -29,7 +29,7 @@ export default function App() {
     >
 
       <GridItem area="nav">
-        <NavBar/>
+        <NavBar onChangeSearchText={newText=>{setGameQuery({...gameQuery, searchText: newText})}}/>
       </GridItem>
 
       <GridItem area="side" hideBelow="lg">
