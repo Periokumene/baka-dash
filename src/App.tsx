@@ -4,13 +4,13 @@ import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
 
-
+const areasBase = `"nav" "main"`;
 const areasLg   = `"nav  nav "
                    "side main"`;
-const areasBase = `"nav" "main"`;
 
-const columnsLg   = "200px 1fr";
 const columnsBase = "1fr";
+const columnsLg   = "200px 1fr";
+
 
 export default function App() {
 
