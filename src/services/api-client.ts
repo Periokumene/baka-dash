@@ -30,7 +30,6 @@ class APIClient<T>
       .then(res=>res.data);
   }
 
-
   // 实际上这个是特化的不应该放在这里，但是我太累了懒得管了
   get = (slug : number|string)=>
   {
