@@ -53,7 +53,7 @@ const query2Params = (gameQuery: GameQuery)=>{
 
 
 const useGamesNew = (gameQuery: GameQuery)=>useQuery<FetchResponse<Game>>({
-  queryKey: ["game", gameQuery],
+  queryKey: ["game", gameQuery], // 这里即useEffect的deps，确保gameQuery修改时useQuery会更新
   queryFn: ()=> apiClient.get("/games", query2Params(gameQuery)).then((res)=>res.data),
   staleTime: 24 * 60 * 60 * 1000, // 24h
   // initialData:
