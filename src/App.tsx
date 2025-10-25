@@ -3,6 +3,8 @@ import {Grid, GridItem} from "@chakra-ui/react";
 import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
+import {useState} from "react";
+import type {Genre} from "@/hooks/useGenres.ts";
 
 const areasBase = `"nav" "main"`;
 const areasLg   = `"nav  nav "
@@ -13,6 +15,8 @@ const columnsLg   = "200px 1fr";
 
 
 export default function App() {
+
+  const [selectedGenre, setSelectedGenre] = useState<Genre|null>(null);
 
   return (<>
     <Grid gap="1"
@@ -25,11 +29,11 @@ export default function App() {
       </GridItem>
 
       <GridItem area="side" hideBelow="lg">
-        <GenresList/>
+        <GenresList selectedGenre={selectedGenre} onSelectGenre={setSelectedGenre}/>
       </GridItem>
 
       <GridItem area="main">
-        <GameGrid/>
+        <GameGrid selectedGenre={selectedGenre}/>
       </GridItem>
     </Grid>
 

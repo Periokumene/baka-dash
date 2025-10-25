@@ -2,15 +2,22 @@ import {For, Show, SimpleGrid, Text} from "@chakra-ui/react";
 import useGames from "@/hooks/useGames.ts";
 import GameCard from "@/components/GameCard.tsx";
 import {GameCardSkel} from "@/components/GameCardSkel.tsx";
+import type {Genre} from "@/hooks/useGenres.ts";
 
 
-export default function GameGrid() {
-  const { datas, error, isLoading } = useGames();
+interface Props{
+  selectedGenre: Genre | null,
+}
+
+
+export default function GameGrid({selectedGenre} : Props) {
+  const { datas, error, isLoading } = useGames(selectedGenre);
   const skeletonList = [1, 2, 3, 4, 5, 6, 7];
 
   return (
     <>
       { error && <Text>{error}</Text> }
+      { selectedGenre && <Text>{selectedGenre.name}</Text>}
       <SimpleGrid
         overflow="hidden"
         columns={[null,1,2,3,5]}
@@ -22,9 +29,12 @@ export default function GameGrid() {
         </Show>
 
         {/*<Show when={!isLoading}>不要包Loading，因为这样不利于IsLoading状态异常时的数据排查</Show>*/}
-        <For each={datas}>
-          {(data, i) => <GameCard key={i} game={data}/>}
-        </For>
+        {/*我们没有选择，因为刷新的时候Loading还是必须清掉已有的内容*/}
+        <Show when={!isLoading}>
+          <For each={datas}>
+            {(data, i) => <GameCard key={i} game={data}/>}
+          </For>
+        </Show>
 
       </SimpleGrid>
     </>
