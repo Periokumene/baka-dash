@@ -1,4 +1,3 @@
-import './App.css'
 import {Box, Flex, Grid, GridItem} from "@chakra-ui/react";
 import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
@@ -15,14 +14,8 @@ const areasLg   = `"nav  nav "
 const columnsBase = "1fr";
 const columnsLg   = "150px 1fr";
 
-
-
-
-
-export default function App() {
-  // const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
-  return (<>
+export function HomePage() {
+  return (
     <Grid gap="1"
           templateAreas  ={{base:areasBase, lg:areasLg}}
           templateColumns={{base:columnsBase, lg:columnsLg}}
@@ -49,13 +42,5 @@ export default function App() {
         <GameGrid/>
       </GridItem>
     </Grid>
-
-
-
-
-    {/*<AspectRatio ratio={16 / 9}>*/}
-    {/*  <DecorativeBox></DecorativeBox>*/}
-    {/*</AspectRatio>*/}
-    {/*<DecorativeBox></DecorativeBox>*/}
-  </>)
+  );
 }
