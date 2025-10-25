@@ -38,4 +38,4 @@ function HomePage() {
   );
 }
 
-export
+export default HomePage;
