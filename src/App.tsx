@@ -5,15 +5,14 @@ import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
 
 
+const areasLg   = `"nav  nav "
+                     "side main"`;
+const areasBase = `"nav" "main"`;
+
+const columnsLg   = "200px 1fr";
+const columnsBase = "1fr";
 
 export default function App() {
-
-  const areasLg   = `"nav  nav "
-                     "side main"`;
-  const areasBase = `"nav" "main"`;
-
-  const columnsLg   = "200px 1fr";
-  const columnsBase = "1fr";
 
   return (<>
     <Grid gap="1"
