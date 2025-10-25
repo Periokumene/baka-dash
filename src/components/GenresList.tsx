@@ -22,8 +22,12 @@ export function GenresList({selectedGenre, onSelectGenre} : Props) {
               <Image src={data.image_background} borderRadius={8}
                      boxSize="32px" objectFit="cover" objectPosition="center"
               />
-              <Button fontSize="lg" variant="link" onClick={()=>onSelectGenre(data)}> {data.name}</Button>
-              {/*<Text fontSize="lg">{data.name}</Text>*/}
+              <Button fontSize="lg"
+                      fontWeight={data.id === selectedGenre?.id ? 'bold' : 'normal'}
+                      variant="outline"
+                      onClick={()=>onSelectGenre(data)}>
+                {data.name}
+              </Button>
             </HStack>
 
           </List.Item>
