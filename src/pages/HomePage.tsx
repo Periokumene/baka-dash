@@ -6,6 +6,7 @@ import {GameComboSort} from "@/components/GameComboSort.tsx";
 import {GameHeading} from "@/components/GameHeading.tsx";
 
 
+// 哎卧槽原来``是必须的，确保了""能够被转义和保留下来
 const areasBase = `"main"`;
 const areasLg   = `"side main"`;
 
