@@ -12,9 +12,8 @@ export interface Genre{
 
 const client = new APIClient<Genre>("/genres");
 
-const useGenresNew = ()=>useQuery<FetchResponse<Genre>>({
+const useGenresNew = ()=>useQuery<FetchResponse<Genre>, Error>({
   queryKey: ["genre"],
-  // queryFn: client.getAll,
   queryFn: client.getAll,
   staleTime: 24 * 60 * 60 * 1000, // 24h
   // initialData: { count: genres.length, results: genres }
