@@ -4,7 +4,7 @@ import usePlatforms from "@/hooks/usePlatforms.ts";
 import type {Platform} from "@/hooks/useGames.ts";
 
 interface Props{
-  selectedPlatform: Platform,
+  selectedPlatform: Platform | null,
   onSelectPlatform: (platform:Platform)=>void;
 };
 

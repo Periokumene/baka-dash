@@ -19,7 +19,7 @@ const columnsLg   = "200px 1fr";
 export default function App() {
 
   const [selectedGenre, setSelectedGenre] = useState<Genre|null>(null);
-  const [selectedPlatfom, setSelectedPlatform] = useState<Platform|null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform|null>(null);
 
   return (<>
     <Grid gap="1"
@@ -36,8 +36,8 @@ export default function App() {
       </GridItem>
 
       <GridItem area="main">
-        <GamePlatformMenu selectedPlatform={selectedPlatfom} onSelectPlatform={setSelectedPlatform}/>
-        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatfom}/>
+        <GamePlatformMenu selectedPlatform={selectedPlatform} onSelectPlatform={setSelectedPlatform}/>
+        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform}/>
       </GridItem>
     </Grid>
 
