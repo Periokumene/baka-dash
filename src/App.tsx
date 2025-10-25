@@ -4,9 +4,8 @@ import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
 import {useState} from "react";
-import type {Genre} from "@/hooks/useGenres.ts";
-import type {Platform} from "@/hooks/useGames.ts";
 import {GamePlatformMenu} from "@/components/GamePlatformMenu.tsx";
+import type {GameQuery} from "@/hooks/useGames.ts";
 
 const areasBase = `"nav" "main"`;
 const areasLg   = `"nav  nav "
@@ -16,10 +15,11 @@ const columnsBase = "1fr";
 const columnsLg   = "200px 1fr";
 
 
-export default function App() {
 
-  const [selectedGenre, setSelectedGenre] = useState<Genre|null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform|null>(null);
+
+
+export default function App() {
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (<>
     <Grid gap="1"
@@ -32,12 +32,12 @@ export default function App() {
       </GridItem>
 
       <GridItem area="side" hideBelow="lg">
-        <GenresList selectedGenre={selectedGenre} onSelectGenre={setSelectedGenre}/>
+        <GenresList selectedGenre={gameQuery.genre} onSelectGenre={(genre)=>setGameQuery({...gameQuery, genre})}/>
       </GridItem>
 
       <GridItem area="main">
-        <GamePlatformMenu selectedPlatform={selectedPlatform} onSelectPlatform={setSelectedPlatform}/>
-        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform}/>
+        <GamePlatformMenu selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}/>
+        <GameGrid gameQuery={gameQuery}/>
       </GridItem>
     </Grid>
 

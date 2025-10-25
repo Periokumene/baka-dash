@@ -15,13 +15,21 @@ export interface Game{
   images: string[],
   parent_platforms: { platform: Platform} []
 }
+export interface GameQuery{
+  genre: Genre | null,
+  platform: Platform | null,
+}
 
 
 
-
-const useGames = (selectedGenre: Genre|null, selectedPlatform: Platform|null)=>useData<Game>(
+const useGames = (gameQuery: GameQuery)=>useData<Game>(
   "/games",
-  {params: {genres: selectedGenre?.id, platforms: selectedPlatform?.id}},
-  [selectedGenre?.id, selectedPlatform?.id]
+  {
+    params: {
+      genres: gameQuery.genre?.id,
+      platforms: gameQuery.platform?.id
+    }
+  },
+  [gameQuery]
 );
 export default useGames;
