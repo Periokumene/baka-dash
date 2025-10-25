@@ -6,7 +6,7 @@ import {GenresList} from "@/components/GenresList.tsx";
 
 
 const areasLg   = `"nav  nav "
-                     "side main"`;
+                   "side main"`;
 const areasBase = `"nav" "main"`;
 
 const columnsLg   = "200px 1fr";
