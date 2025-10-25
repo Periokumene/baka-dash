@@ -15,6 +15,8 @@ export interface Game{
   metacritic : number,
   background_image: string,
   images: string[],
+  slug: string,
+  description_raw: string,
   parent_platforms: { platform: Platform} []
 }
 
