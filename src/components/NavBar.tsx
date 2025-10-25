@@ -7,10 +7,11 @@ import {SearchInput} from "@/components/SearchInput.tsx";
 
 export default function NavBar() {
   return (
-      <HStack borderColor="fg.disabled" borderWidth="1px" justifyContent="space-between">
+      <HStack borderColor="fg.disabled"
+              borderBottomWidth="1px"
+              justifyContent="space-between">
         <HStack>
-          <Image src={logo} height="60px"></Image>
-          <Text>NavBar</Text>
+          <Image src={logo} height="60px" margin="12px"></Image>
         </HStack>
         <SearchInput/>
         <ColorModeButton float="right"/>
