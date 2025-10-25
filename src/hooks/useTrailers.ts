@@ -1,12 +1,7 @@
 import APIClient from "@/services/api-client.ts";
 import {useQuery} from "@tanstack/react-query";
+import type {Trailer} from "@/entities/Trailer.ts";
 
-export interface Trailer {
-  id: number;
-  name: string;
-  preview: string;
-  data: { 480: string; max: string };
-}
 
 
 

@@ -1,8 +1,8 @@
 import {Card, Image, Link} from "@chakra-ui/react";
-import type {Game} from "@/hooks/useGames.ts";
 import GamePlatformList from "@/components/GamePlatformList.tsx";
 import GameScore from "@/components/GameScore.tsx";
 import {GameCardHolder} from "@/components/GameCardHolder.tsx";
+import type {Game} from "@/entities/Game.ts";
 
 interface Props{
   game : Game,

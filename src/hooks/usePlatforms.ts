@@ -1,12 +1,8 @@
 import {useQuery} from "@tanstack/react-query";
 import APIClient, {type FetchResponse} from "@/services/api-client.ts";
 import ms from "ms";
+import type {Platform} from "@/entities/Platform.ts";
 
-interface Platform{
-  id: number,
-  name: string,
-  slug: string,
-};
 
 // const usePlatforms = ()=>useData<Platform>("/platforms/lists/parents");
 

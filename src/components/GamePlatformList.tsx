@@ -1,4 +1,4 @@
-import type {Platform} from "@/hooks/useGames.ts";
+
 import {For, HStack, Icon} from "@chakra-ui/react";
 
 import { FaPlaystation } from "react-icons/fa";
@@ -8,6 +8,7 @@ import { FaWindows } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import { MdError } from "react-icons/md";
 import type { IconType } from "react-icons";
+import type {Platform} from "@/entities/Platform.ts";
 
 
 interface Props{
