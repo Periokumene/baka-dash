@@ -2,6 +2,7 @@
 import {Button, For, Menu, Portal, Spinner} from "@chakra-ui/react";
 import usePlatforms from "@/hooks/usePlatforms.ts";
 import useGameQueryStore from "@/store.ts";
+import {BsChevronDown} from "react-icons/bs";
 
 
 
@@ -16,6 +17,7 @@ export function GameComboPlatform() {
       <Menu.Root>
         <Menu.Trigger asChild>
           <Button variant="outline" size="sm">
+            <BsChevronDown/>
             {platform? platform.name : "Platform"}
             {isLoading && <Spinner/>}
             {/*Platform*/}
