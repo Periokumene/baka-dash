@@ -8,7 +8,7 @@ interface Props{
 }
 
 export function GenresList({selectedGenre, onSelectGenre} : Props) {
-  const { datas, error, isLoading} = useGenres();
+  const { data, error, isLoading} = useGenres();
 
   return (
     <>
@@ -17,20 +17,21 @@ export function GenresList({selectedGenre, onSelectGenre} : Props) {
       </Heading>
 
       {isLoading && <Spinner/>}
-      {error && <Text>{error}</Text>}
+      {error && <Text>{error.message}</Text>}
+
 
       <List.Root>
-        { datas.map((data) => (
-          <List.Item key={data.id} paddingY="5px">
+        { data?.results.map((genre) => (
+          <List.Item key={genre.id} paddingY="5px">
             <HStack>
-              <Image src={data.image_background} borderRadius={8}
+              <Image src={genre.image_background} borderRadius={8}
                      boxSize="32px" objectFit="cover" objectPosition="center"
               />
               <Button fontSize="md"
-                      fontWeight={data.id === selectedGenre?.id ? 'bold' : 'normal'}
+                      fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
                       variant="outline"
-                      onClick={()=>onSelectGenre(data)}>
-                {data.name}
+                      onClick={()=>onSelectGenre(genre)}>
+                {genre.name}
               </Button>
             </HStack>
 

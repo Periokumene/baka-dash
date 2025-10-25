@@ -29,6 +29,7 @@ const iconTypeMap : {[key:string]:IconType} = {
 //   mac: <FaApple/>,
 // }
 
+
 export default function GamePlatformList({platforms} : Props) {
   return (
     <>

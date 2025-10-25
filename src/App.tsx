@@ -9,6 +9,7 @@ import type {GameQuery} from "@/hooks/useGames.ts";
 import {GameComboSort} from "@/components/GameComboSort.tsx";
 import {GameHeading} from "@/components/GameHeading.tsx";
 
+
 const areasBase = `"nav" "main"`;
 const areasLg   = `"nav  nav "
                    "side main"`;

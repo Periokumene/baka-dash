@@ -9,7 +9,7 @@ interface Props{
 };
 
 export function GameComboPlatform({selectedPlatform, onSelectPlatform} : Props) {
-  const { datas, error, isLoading} = usePlatforms();
+  const { data, error, isLoading} = usePlatforms();
 
   return (
     <>
@@ -24,11 +24,11 @@ export function GameComboPlatform({selectedPlatform, onSelectPlatform} : Props) 
         <Portal>
           <Menu.Positioner>
             <Menu.Content>
-              { error && <Menu.Item value="ERROR_PRESERVED">{error}</Menu.Item> }
-              <For each={datas}>
-                {(data)=>
-                  <Menu.Item value={data.name} onClick={()=>onSelectPlatform(data)}>
-                    {data.name}
+              { error && <Menu.Item value="ERROR_PRESERVED">{error?.message}</Menu.Item> }
+              <For each={data?.results}>
+                {(platform)=>
+                  <Menu.Item value={platform.name} onClick={()=>onSelectPlatform(platform)}>
+                    {platform.name}
                   </Menu.Item>}
               </For>
             </Menu.Content>

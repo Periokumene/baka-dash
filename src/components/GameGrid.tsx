@@ -10,12 +10,12 @@ interface Props{
 
 
 export default function GameGrid({gameQuery} : Props) {
-  const { datas, error, isLoading } = useGames(gameQuery);
+  const { data, error, isLoading } = useGames(gameQuery);
   const skeletonList = [1, 2, 3, 4, 5, 6, 7];
 
   return (
     <>
-      { error && <Text>{error}</Text> }
+      { error && <Text>{error.message}</Text> }
       <SimpleGrid
         overflow="hidden"
         columns={[null,1,2,3,5]}
@@ -29,7 +29,7 @@ export default function GameGrid({gameQuery} : Props) {
         {/*<Show when={!isLoading}>不要包Loading，因为这样不利于IsLoading状态异常时的数据排查</Show>*/}
         {/*我们没有选择，因为刷新的时候Loading还是必须清掉已有的内容*/}
         <Show when={!isLoading}>
-          <For each={datas}>
+          <For each={data?.results}>
             {(data, i) => <GameCard key={i} game={data}/>}
           </For>
         </Show>
