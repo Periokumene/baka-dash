@@ -2,12 +2,17 @@ import {useInfiniteQuery} from "@tanstack/react-query";
 import APIClient, {type FetchResponse} from "@/services/api-client.ts";
 import ms from "ms";
 import type {GameQuery} from "@/store.ts";
+import type {Genre} from "@/hooks/useGenres.ts";
 
 
 export interface Platform {
   id: number,
   name: string,
   slug: string,
+}
+export interface Publisher {
+  id: number;
+  name: string;
 }
 export interface Game{
   id: number;
@@ -18,6 +23,9 @@ export interface Game{
   slug: string,
   description_raw: string,
   parent_platforms: { platform: Platform} []
+
+  genres: Genre[];
+  publishers: Publisher[];
 }
 
 
