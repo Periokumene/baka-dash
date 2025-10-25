@@ -1,4 +1,4 @@
-import type {PlatForm} from "@/hooks/useGames.ts";
+import type {Platform} from "@/hooks/useGames.ts";
 import {For, HStack, Icon} from "@chakra-ui/react";
 
 import { FaPlaystation } from "react-icons/fa";
@@ -11,7 +11,7 @@ import type { IconType } from "react-icons";
 
 
 interface Props{
-  platforms: PlatForm[],
+  platforms: Platform[],
 }
 
 const iconTypeMap : {[key:string]:IconType} = {

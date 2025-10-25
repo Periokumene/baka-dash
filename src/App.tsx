@@ -5,6 +5,8 @@ import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
 import {useState} from "react";
 import type {Genre} from "@/hooks/useGenres.ts";
+import type {Platform} from "@/hooks/useGames.ts";
+import {GamePlatformMenu} from "@/components/GamePlatformMenu.tsx";
 
 const areasBase = `"nav" "main"`;
 const areasLg   = `"nav  nav "
@@ -17,6 +19,7 @@ const columnsLg   = "200px 1fr";
 export default function App() {
 
   const [selectedGenre, setSelectedGenre] = useState<Genre|null>(null);
+  const [selectedPlatfom, setSelectedPlatform] = useState<Platform|null>(null);
 
   return (<>
     <Grid gap="1"
@@ -33,7 +36,8 @@ export default function App() {
       </GridItem>
 
       <GridItem area="main">
-        <GameGrid selectedGenre={selectedGenre}/>
+        <GamePlatformMenu selectedPlatform={selectedPlatfom} onSelectPlatform={setSelectedPlatform}/>
+        <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatfom}/>
       </GridItem>
     </Grid>
 
