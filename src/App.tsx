@@ -1,5 +1,5 @@
 import './App.css'
-import {Grid, GridItem} from "@chakra-ui/react";
+import {Box, Flex, Grid, GridItem} from "@chakra-ui/react";
 import NavBar from "@/components/NavBar.tsx";
 import GameGrid from "@/components/GameGrid.tsx";
 import {GenresList} from "@/components/GenresList.tsx";
@@ -37,8 +37,15 @@ export default function App() {
       </GridItem>
 
       <GridItem area="main">
-        <GameComboPlatform selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}/>
-        <GameComboSort ordering={gameQuery.ordering} onSelectOrdering={ordering => {setGameQuery({...gameQuery, ordering})} }/>
+        <Flex paddingLeft={0} marginBottom={5}>
+          <Box marginRight={5}>
+            <GameComboPlatform selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}/>
+          </Box>
+          <GameComboSort ordering={gameQuery.ordering} onSelectOrdering={ordering => {setGameQuery({...gameQuery, ordering})} }/>
+        </Flex>
+
+
+
         <GameGrid gameQuery={gameQuery}/>
       </GridItem>
     </Grid>
