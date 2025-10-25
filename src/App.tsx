@@ -7,6 +7,7 @@ import {useState} from "react";
 import {GameComboPlatform} from "@/components/GameComboPlatform.tsx";
 import type {GameQuery} from "@/hooks/useGames.ts";
 import {GameComboSort} from "@/components/GameComboSort.tsx";
+import {GameHeading} from "@/components/GameHeading.tsx";
 
 const areasBase = `"nav" "main"`;
 const areasLg   = `"nav  nav "
@@ -37,14 +38,14 @@ export default function App() {
       </GridItem>
 
       <GridItem area="main">
-        <Flex paddingLeft={0} marginBottom={5}>
+        <GameHeading gameQuery={gameQuery}/>
+
+        <Flex paddingLeft={0} marginTop={5} marginBottom={5}>
           <Box marginRight={5}>
             <GameComboPlatform selectedPlatform={gameQuery.platform} onSelectPlatform={(platform)=>setGameQuery({...gameQuery, platform})}/>
           </Box>
           <GameComboSort ordering={gameQuery.ordering} onSelectOrdering={ordering => {setGameQuery({...gameQuery, ordering})} }/>
         </Flex>
-
-
 
         <GameGrid gameQuery={gameQuery}/>
       </GridItem>
