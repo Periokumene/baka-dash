@@ -1,4 +1,3 @@
-import type {Genre} from "@/hooks/useGenres.ts";
 import {useInfiniteQuery} from "@tanstack/react-query";
 import APIClient, {type FetchResponse} from "@/services/api-client.ts";
 import ms from "ms";
@@ -17,18 +16,18 @@ export interface Game{
   images: string[],
   parent_platforms: { platform: Platform} []
 }
+
 export interface GameQuery{
-  genre: Genre | null,
+  genreId: number,
   platform: Platform | null,
   ordering: string,
   searchText: string,
 }
-
 //
 const query2Params = (gameQuery: GameQuery, page: number)=>{
   const Pack = {
     params: {
-        genres: gameQuery.genre?.id,
+        genres: gameQuery.genreId,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.ordering,
         search: gameQuery.searchText,

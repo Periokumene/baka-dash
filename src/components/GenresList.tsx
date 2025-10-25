@@ -1,13 +1,13 @@
-import useGenres, {type Genre} from "@/hooks/useGenres.ts";
+import useGenres from "@/hooks/useGenres.ts";
 import {Button, Heading, HStack, Image, List, Spinner, Text} from "@chakra-ui/react";
 
 
 interface Props{
-  selectedGenre: Genre|null,
-  onSelectGenre: (genre:Genre) => void,
+  selectedGenreId: number | null,
+  onSelectGenreId: (genreId : number)=>void,
 }
 
-export function GenresList({selectedGenre, onSelectGenre} : Props) {
+export function GenresList({selectedGenreId, onSelectGenreId} : Props) {
   const { data, error, isLoading} = useGenres();
 
   return (
@@ -28,9 +28,9 @@ export function GenresList({selectedGenre, onSelectGenre} : Props) {
                      boxSize="32px" objectFit="cover" objectPosition="center"
               />
               <Button fontSize="md"
-                      fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+                      fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
                       variant="outline"
-                      onClick={()=>onSelectGenre(genre)}>
+                      onClick={()=>onSelectGenreId(genre.id)}>
                 {genre.name}
               </Button>
             </HStack>

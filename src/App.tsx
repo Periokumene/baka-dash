@@ -35,7 +35,7 @@ export default function App() {
       </GridItem>
 
       <GridItem area="side" hideBelow="lg">
-        <GenresList selectedGenre={gameQuery.genre} onSelectGenre={(genre)=>setGameQuery({...gameQuery, genre})}/>
+        <GenresList selectedGenreId={gameQuery.genreId} onSelectGenreId={(genreId)=>setGameQuery({...gameQuery, genreId})}/>
       </GridItem>
 
       <GridItem area="main">
