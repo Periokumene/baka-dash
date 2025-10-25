@@ -6,8 +6,8 @@ import {GameComboSort} from "@/components/GameComboSort.tsx";
 import {GameHeading} from "@/components/GameHeading.tsx";
 
 
-const areasBase = "main";
-const areasLg   = "side main";
+const areasBase = `"main"`;
+const areasLg   = `"side main"`;
 
 const columnsBase = "1fr";
 const columnsLg   = "150px 1fr";
